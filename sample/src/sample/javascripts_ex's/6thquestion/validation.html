@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<title>Valid</title>
+<script >
+function formValidation()
+{
+var pwd = document.registration.pwd;
+var uid = document.registration.username;
+if(pwdvalid(pwd,7,12))
+{
+if(validname(uid))
+{
+
+}
+}
+return false;
+}
+
+function pwdvalid(pwd,x,y)
+{
+var pwd_len = pwd.value.length;
+if (pwd_len == 0 ||pwd_len >= y || pwd_len < x)
+{
+alert("Password should not be empty / length be between "+x+" to "+y);
+pwd.focus();
+return false;
+}
+return true;
+}
+function validname(uid)
+{ 
+var letters = /^[A-Za-z]+$/;
+if(uid.value.match(letters))
+{
+alert('Form Succesfully Submitted');
+window.location.reload()
+return true;
+}
+else
+{
+alert('Username must have alphabet characters only');
+uid.focus();
+return false;
+}
+
+}
+</script>
+</head>
+<body onload="document.registration.userid.focus();">
+<h1>Validate</h1>
+
+<form name='registration' onSubmit="return formValidation();">
+<ul>
+<li><label for="username">Name:</label></li>
+<li><input type="text" name="username" size="50" /></li>
+<li><label for="pwd">Password:</label></li>
+<li><input type="password" name="pwd" size="12" /></li>
+
+<li><input type="submit" name="submit" value="Submit" /></li>
+</ul>
+</form>
+</body>
+</html>
